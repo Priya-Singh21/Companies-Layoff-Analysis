@@ -28,6 +28,7 @@ WHERE company in(
     ) AS subquery
 )    ;
 
+-- handling null values
 select * from layoffs where industry is null or industry = '' ;
 
 update layoffs set industry = null where industry = '';
@@ -46,8 +47,7 @@ select * from layoffs where total_laid_off is null and percentage_laid_off is nu
 delete from layoffs where total_laid_off is null and percentage_laid_off is null;
 
 
-
--- change date 
+-- change date data type
 UPDATE layoffs
 SET `date` = STR_TO_DATE(`date`, '%m/%d/%Y');
 
